@@ -1,0 +1,14 @@
+<header>
+    <ul>
+        <li>Inicio</li>
+        <li (click)="handlerMenuCategorys()">
+            Categoria
+            <ul [ngClass]="menuCategorys ? 'open': 'close' ">
+                <li *ngFor="let category of categorys">
+                    {{category.name}}
+                </li>
+            </ul>
+        </li>
+        <li>Mas Visto</li>
+    </ul>
+</header>

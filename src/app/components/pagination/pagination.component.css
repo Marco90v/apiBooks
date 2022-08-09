@@ -1,0 +1,44 @@
+div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    margin: 20px 0;
+}
+div > button{
+    background-color: #28323ce6;
+    color: white;
+    /* padding: 10px 0; */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: box-shadow 0.25s ease-in-out, background-color 0.25s ease-in-out;
+}
+div > button:hover{
+    background-color: #eb1808;
+    box-shadow: 0 0 5px 1px #28323ce6;
+}
+div > input[type="number"]{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    font-size: 15px;
+}
+div > input[type="number"]:active{
+    border-color: #eb1808;
+}
+div > input[type="number"]:focus{
+    border-color: #eb1808;
+}
+div > input[type="number"]:focus-visible{
+    border-color: #eb1808;
+    outline-color: #eb1808;
+}
+div > span{
+    font-size: 20px;
+    font-weight: bold;
+}
