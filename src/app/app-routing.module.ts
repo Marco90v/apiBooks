@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './components/detail/detail.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path:'mostviewed/page/:page', component:HomeComponent },
   { path:'category/:category', component:HomeComponent },
   { path:'category/:category/page/:page', component:HomeComponent },
-  { path:'detail/:ID', component:HomeComponent }
+  { path:'detail/:ID', component:DetailComponent }
 ];
 
 @NgModule({

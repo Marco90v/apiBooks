@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
+import { ReplaceEntitiesPipe } from './pipes/replace-entities.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DetailComponent } from './components/detail/detail.component';
     HomeComponent,
     HeaderComponent,
     PaginationComponent,
-    DetailComponent
+    DetailComponent,
+    ReplaceEntitiesPipe
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,51 @@
-<p>detail works!</p>
+<div *ngIf="data; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <article>
+        <img [src]="data?.cover" [alt]="data?.title">
+        <section>
+            <label>Titulo</label>
+            <h1>{{data?.title}}</h1>
+    
+            <label>Autor</label>
+            <h2>{{data?.author}}</h2>
+    
+            <label>Editor</label>
+            <p>{{data?.publisher}}</p>
+    
+            <label>Año</label>
+            <p>{{data?.publisher_date}}</p>
+    
+            <label>Paginas</label>
+            <p>{{data?.pages}}</p>
+    
+            <label>Idioma</label>
+            <p>{{data?.language}}</p>
+    
+            <label class="labelContenido">Contenido</label>
+            <p [innerHtml]="data?.content | replaceEntities" class="contentDetail"></p>
+
+            <label class="labelCategoria">Categorias</label>
+            <ul>
+                <li *ngFor="let category of data?.categories">
+                    <a [routerLink]="['/category/'+category.nicename]">
+                        {{category.name}}
+                    </a>
+                </li>
+            </ul>
+    
+            <label class="labelEtiqueta">Etiquetas</label>
+            <ul>
+                <li *ngFor="let tag of data?.tags">
+                    <a [routerLink]="['/category/'+tag.nicename]">
+                        {{tag.name}}
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+</ng-template>
+<ng-template #elseBlock>
+    <div class="loading">
+        <p>Cargando...</p>
+    </div>
+</ng-template>

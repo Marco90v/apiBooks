@@ -25,19 +25,12 @@ export class PaginationComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private getPagination: SevicesService) {
 
-    if(route.snapshot.url[0]?.path === 'mostviewed'){
+    if(this.route.snapshot.url[0]?.path === 'mostviewed'){
       this.ruta += "&criteria=most_viewed";
       this.path += "mostviewed";
-      // console.log("u_u");
     }
 
-    route.params.subscribe(params => {
-      // console.log(params);
-      // let pageStart :number = 0;
-      // if(params['page']){
-      //   pageStart = params['page'] * this.itemsPage - this.itemsPage;
-      // }
-      // this.ruta += "&results_range=" + pageStart +",10"; 
+    this.route.params.subscribe(params => {
 
       if(params['category']){
         this.path += "category/" + params['category'];
@@ -46,13 +39,8 @@ export class PaginationComponent implements OnInit {
       
       let page = Number(params['page']);
       if (page) this.pageCurrent = page;
-      // console.log(this.path);
     });
     
-    // this.getPagination.getTotalBooks().subscribe(item=> {
-    //   this.num_items = Math.ceil(Number(item.num_items))
-    //   this.totalPages = this.num_items / 10;
-    // })
 
     this.getPagination.getTotalBooks(this.ruta).subscribe(item=> {
       this.num_items = Number(item.num_items);
@@ -64,14 +52,10 @@ export class PaginationComponent implements OnInit {
     // this.totalPages = 7;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-   
 
   getNextPage(){
-    // console.log(this.path + '/page/'+ (this.pageCurrent+1));
     if(this.pageCurrent < this.totalPages) this.router.navigateByUrl(this.path + '/page/'+ (this.pageCurrent+1));
   }
 

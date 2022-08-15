@@ -1,0 +1,79 @@
+ul{
+    list-style: none;
+}
+header{
+    background-color: #0c0c0e;
+    color: white;
+    padding: 1rem;
+}
+header li{
+    cursor: pointer;
+}
+header > ul > li{
+    display: inline;
+    padding: 0 0.5rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+header > ul > li:hover{
+    color: #eb1808;
+}
+header > ul > li.active-link{
+    color: #eb1808;
+}
+header > ul > li > a{
+    color: white;
+    text-decoration: none;
+}
+header > ul > li > a.active-link{
+    color: #eb1808;
+}
+header > ul > li > a:hover{
+    color: #eb1808;
+}
+header > ul > li:first-child{
+    position: relative;
+}
+header > ul > li:nth-child(2){
+    position: relative;
+}
+header > ul > li:nth-child(2) > ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #0c0c0e;
+    position: absolute;
+    width: 400px;
+    left: 15px;
+    top: 35px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px #0c0c0e;
+    overflow: hidden;
+    z-index: 10;
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+header > ul > li:nth-child(2) > ul.close {
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+}
+header > ul > li:nth-child(2) > ul.open {
+    height: 544px;
+    width: 400px;
+    opacity: 1;
+}
+header > ul > li:nth-child(2) > ul > li {
+    padding: 0.5rem;
+}
+header > ul > li:nth-child(2) > ul > li > a {
+    color: white;
+    text-decoration: none;
+}
+header > ul > li:nth-child(2) > ul > li:hover {
+    background-color: #eb1808;
+}
+header > ul > li:nth-child(2) > ul > li > a.active-link {
+    color: #eb1808;
+}
+header > ul > li:nth-child(2) > ul > li:hover > a.active-link {
+    color: white;
+}

@@ -5,7 +5,7 @@
     box-sizing: border-box;
     border: 0;
 }
-ul{
+/* ul{
     list-style: none;
 }
 header{
@@ -83,4 +83,4 @@ header > ul > li:nth-child(2) > ul > li > a.active-link {
 }
 header > ul > li:nth-child(2) > ul > li:hover > a.active-link {
     color: white;
-}
+} */
