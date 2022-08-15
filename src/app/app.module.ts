@@ -9,13 +9,15 @@ import { SevicesService } from './services/sevices.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,16 @@
 <header>
     <ul>
-        <li>Inicio</li>
-        <li (click)="handlerMenuCategorys()">
+        <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
+        <li (click)="handlerMenuCategorys()" routerLinkActive="active-link" >
             Categoria
             <ul [ngClass]="menuCategorys ? 'open': 'close' ">
                 <li *ngFor="let category of categorys">
-                    {{category.name}}
+                    <a [routerLink]="['category/'+category.nicename]" routerLinkActive="active-link" >
+                        {{category.name}}
+                    </a>
                 </li>
             </ul>
         </li>
-        <li>Mas Visto</li>
+        <li><a [routerLink]="['mostviewed']" routerLinkActive="active-link">Mas Visto</a></li>
     </ul>
 </header>

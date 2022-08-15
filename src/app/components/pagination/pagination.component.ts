@@ -19,10 +19,17 @@ export class PaginationComponent implements OnInit {
   protected pageCurrent: number = 1;
   protected rangePage: number = 5;
   protected ruta: string = "";
+  protected path: string = "";
 
   @Output() setBooks = new EventEmitter<Array<Book>>();
 
   constructor(private route: ActivatedRoute, private router: Router, private getPagination: SevicesService) {
+
+    if(route.snapshot.url[0]?.path === 'mostviewed'){
+      this.ruta += "&criteria=most_viewed";
+      this.path += "mostviewed";
+      // console.log("u_u");
+    }
 
     route.params.subscribe(params => {
       // console.log(params);
@@ -31,16 +38,29 @@ export class PaginationComponent implements OnInit {
       //   pageStart = params['page'] * this.itemsPage - this.itemsPage;
       // }
       // this.ruta += "&results_range=" + pageStart +",10"; 
+
+      if(params['category']){
+        this.path += "category/" + params['category'];
+        this.ruta += "&category=" + params['category'];
+      }
+      
       let page = Number(params['page']);
       if (page) this.pageCurrent = page;
+      // console.log(this.path);
     });
     
     // this.getPagination.getTotalBooks().subscribe(item=> {
     //   this.num_items = Math.ceil(Number(item.num_items))
     //   this.totalPages = this.num_items / 10;
     // })
-    this.num_items = 4207;
-    this.totalPages = Math.ceil(this.num_items / this.itemsPage);
+
+    this.getPagination.getTotalBooks(this.ruta).subscribe(item=> {
+      this.num_items = Number(item.num_items);
+      this.totalPages = Math.ceil(this.num_items / this.itemsPage);
+    });
+
+    // this.num_items = 4207;
+    // this.totalPages = Math.ceil(this.num_items / this.itemsPage);
     // this.totalPages = 7;
   }
 
@@ -51,11 +71,12 @@ export class PaginationComponent implements OnInit {
    
 
   getNextPage(){
-    if(this.pageCurrent < this.totalPages) this.router.navigateByUrl('/'+ (this.pageCurrent+1));
+    // console.log(this.path + '/page/'+ (this.pageCurrent+1));
+    if(this.pageCurrent < this.totalPages) this.router.navigateByUrl(this.path + '/page/'+ (this.pageCurrent+1));
   }
 
   getPrevPage(){
-    if(this.pageCurrent > 1) this.router.navigateByUrl('/'+ (this.pageCurrent-1));
+    if(this.pageCurrent > 1) this.router.navigateByUrl(this.path + '/page/'+ (this.pageCurrent-1));
   }
 
 }

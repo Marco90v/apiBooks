@@ -3,11 +3,13 @@
     <ul>
         <li *ngFor="let listBook of listBooks">
             <img [src]="listBook.cover" [alt]="listBook.title">
-            <div>
-                <h2>{{listBook.title}}</h2>
-                <p><strong>Autor:</strong> {{listBook.author}}</p>
-                <span>{{listBook.pages}} Paginas</span>
-            </div>
+            <a [routerLink]="['detail/'+listBook.ID]">
+                <div>
+                    <h2>{{listBook.title}}</h2>
+                    <p><strong>Autor:</strong> {{listBook.author}}</p>
+                    <span>{{listBook.pages}} Paginas</span>
+                </div>
+            </a>
         </li>
     </ul>
     <app-pagination (setBooks)="setListBooks($event)">></app-pagination>

@@ -19,6 +19,24 @@ header li{
 header > ul > li{
     display: inline;
     padding: 0 0.5rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+header > ul > li:hover{
+    color: #eb1808;
+}
+header > ul > li.active-link{
+    color: #eb1808;
+}
+header > ul > li > a{
+    color: white;
+    text-decoration: none;
+}
+header > ul > li > a.active-link{
+    color: #eb1808;
+}
+header > ul > li > a:hover{
+    color: #eb1808;
 }
 header > ul > li:first-child{
     position: relative;
@@ -53,7 +71,16 @@ header > ul > li:nth-child(2) > ul.open {
 header > ul > li:nth-child(2) > ul > li {
     padding: 0.5rem;
 }
+header > ul > li:nth-child(2) > ul > li > a {
+    color: white;
+    text-decoration: none;
+}
 header > ul > li:nth-child(2) > ul > li:hover {
-    /* background-color: #313138; */
     background-color: #eb1808;
+}
+header > ul > li:nth-child(2) > ul > li > a.active-link {
+    color: #eb1808;
+}
+header > ul > li:nth-child(2) > ul > li:hover > a.active-link {
+    color: white;
 }
