@@ -2,9 +2,11 @@ ul{
     list-style: none;
 }
 header{
-    background-color: #0c0c0e;
+    background-color: #1c1d22;
     color: white;
     padding: 1rem;
+    display: grid;
+    grid-template-columns: auto 350px;
 }
 header li{
     cursor: pointer;
@@ -40,7 +42,7 @@ header > ul > li:nth-child(2){
 header > ul > li:nth-child(2) > ul {
     display: grid;
     grid-template-columns: auto auto;
-    background-color: #0c0c0e;
+    background-color: #1c1d22;
     position: absolute;
     width: 400px;
     left: 15px;
@@ -76,4 +78,37 @@ header > ul > li:nth-child(2) > ul > li > a.active-link {
 }
 header > ul > li:nth-child(2) > ul > li:hover > a.active-link {
     color: white;
+}
+header > form > select{
+    font-size: 15px;
+    padding: 4px;
+    background-color: #dfdfdf;
+    border-radius: 5px 0 0 5px;
+}
+header > form > input{
+    font-size: 15px;
+    padding: 5px;
+    /* border-radius: 5px 0 0 5px; */
+}
+header > form > input[type="text"]:active{
+    border-color: #eb1808;
+}
+header > form > input[type="text"]:focus{
+    border-color: #eb1808;
+}
+header > form > input[type="text"]:focus-visible{
+    border-color: #eb1808;
+    outline-color: #eb1808;
+}
+header > form > button{
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    background-color: #eb1808;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+header > form > button:hover{
+    background-color: #ba1306;
 }

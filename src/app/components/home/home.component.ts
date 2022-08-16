@@ -16,14 +16,18 @@ export class HomeComponent implements OnInit {
   protected ruta: string = "";
 
   constructor(private route: ActivatedRoute, private Services: SevicesService) {
-    route.params.subscribe(params => {
-      // console.log(route.snapshot.url[0].path);
+    this.route.params.subscribe(params => {
       let pageStart :number = 0;
       if(route.snapshot.url[0]?.path === 'mostviewed'){
         this.ruta += "&criteria=most_viewed";
       }
       if(params['category']){
         this.ruta += "&category=" + params['category'];
+      }
+      if(params['type'] && params['word']){
+        this.ruta = '';
+        if(params['type']==="titulo") this.ruta += `&book_title="${params['word']}"`;
+        if(params['type']==="autor") this.ruta += `&book_author="${params['word']}"`;
       }
       if(params['page']){
         pageStart = params['page'] * this.itemsPage - this.itemsPage;

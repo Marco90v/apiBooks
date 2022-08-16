@@ -13,4 +13,12 @@
         </li>
         <li><a [routerLink]="['mostviewed']" routerLinkActive="active-link">Mas Visto</a></li>
     </ul>
+    <form (ngSubmit)="getBookByWord()" [formGroup]="search">
+        <select name="select" formControlName="type" >
+            <option value="titulo" selected>Titulo</option>
+            <option value="autor">Autor</option>
+        </select >
+        <input type="text" formControlName="word" >
+        <button type="submit">Buscar</button>
+    </form>
 </header>

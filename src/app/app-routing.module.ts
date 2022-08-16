@@ -12,7 +12,9 @@ const routes: Routes = [
   { path:'mostviewed/page/:page', component:HomeComponent },
   { path:'category/:category', component:HomeComponent },
   { path:'category/:category/page/:page', component:HomeComponent },
-  { path:'detail/:ID', component:DetailComponent }
+  { path:'detail/:ID', component:DetailComponent },
+  { path:'search/:type/:word', component:HomeComponent },
+  { path:'search/:type/:word/page/:page', component:HomeComponent }
 ];
 
 @NgModule({

@@ -36,20 +36,23 @@ export class PaginationComponent implements OnInit {
         this.path += "category/" + params['category'];
         this.ruta += "&category=" + params['category'];
       }
+      if(params['type'] && params['word']){
+        this.ruta = '';
+        this.path = '';
+        if(params['type']==="titulo") this.ruta += `&book_title="${params['word']}"`;
+        if(params['type']==="autor") this.ruta += `&book_author="${params['word']}"`;
+
+        if(params['type']==="titulo")  this.path += `/search/${params['type']}/${params['word']}`;
+      }
       
       let page = Number(params['page']);
       if (page) this.pageCurrent = page;
     });
     
-
     this.getPagination.getTotalBooks(this.ruta).subscribe(item=> {
       this.num_items = Number(item.num_items);
       this.totalPages = Math.ceil(this.num_items / this.itemsPage);
     });
-
-    // this.num_items = 4207;
-    // this.totalPages = Math.ceil(this.num_items / this.itemsPage);
-    // this.totalPages = 7;
   }
 
   ngOnInit(): void {}

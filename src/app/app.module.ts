@@ -11,6 +11,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { RouterModule } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
 import { ReplaceEntitiesPipe } from './pipes/replace-entities.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReplaceEntitiesPipe } from './pipes/replace-entities.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [SevicesService],
   bootstrap: [AppComponent]
