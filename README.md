@@ -1,5 +1,63 @@
 # ApiBooks
 
+Exercise application, API consumption of miscellaneous books.
+## Content:
+- Home
+- Most Viewed
+- Category
+- Favorites
+- Search by title or author
+- Book Details
+- Pagination
+## Development:
+- Angular
+- Openlibra API
+- CSS
+- Grid
+- Flexbox
+
+## Screenshot:
+
+### Home:
+![Home](screenshot/Inicio.webp)
+### Favorites:
+![Favoritos](screenshot/Favoritos.webp)
+### Details:
+![Detalles](screenshot/Detalle.webp)
+
+---
+
+# ApiBooks
+
+Aplicación de ejercicio, consumo de API de libros varios.
+## Contenido:
+-	Inicio
+-	Mas Vistos
+-	Categoría
+-	Favoritos
+-	Búsqueda por título o autor
+-	Detalles del libro
+-	Paginación
+## Desarrollo:
+-	Angular
+-	API de Openlibra
+-	CSS
+-	Grid
+-	Flexbox
+## Capturas:
+
+### Inicio:
+![Inicio](screenshot/Inicio.webp)
+### Favoritos:
+![Favoritos](screenshot/Favoritos.webp)
+
+### Detalles:
+![Detalles](screenshot/Detalle.webp)
+
+
+---
+
+### CLI
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
 
 ## Development server
