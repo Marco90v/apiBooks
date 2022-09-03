@@ -1,12 +1,25 @@
 article{
     display: grid;
     grid-template-columns: auto auto;
+    grid-template-rows: 471px auto;
     margin: auto;
     padding: 20px;
     column-gap: 50px;
     max-width: 1200px;
 }
+article > img {
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+article > span {
+    grid-column: 1/3;
+    font-weight: bold;
+}
+article > span > img {
+    cursor: pointer;
+}
 article > section{
+    grid-row: 1/3;
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 30px;

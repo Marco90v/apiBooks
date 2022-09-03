@@ -46,4 +46,27 @@ export class SevicesService {
       .replaceAll("&gt;",">")
   }
 
+  setFave(newFave:Book){
+    const faves = this.getFave();
+    const idfaves = this.getIdFave();
+    faves.push(newFave);
+    idfaves.push(newFave.ID);
+    localStorage.setItem('detailFave',JSON.stringify(faves));
+    localStorage.setItem('idFave',JSON.stringify(idfaves));
+  }
+  getIdFave():String[]{
+    return JSON.parse(localStorage.getItem('idFave') || "[]");
+  }
+  getFave():Book[]{
+    return JSON.parse(localStorage.getItem('detailFave') || "[]");
+  }
+  deleteFave(id:String){
+    const faves = this.getFave();
+    const idFaves = this.getIdFave();
+    const newFaves = faves.filter(fave=>fave.ID!==id);
+    const newIdFaves = idFaves.filter(idfave=>idfave!==id);
+    localStorage.setItem('detailFave',JSON.stringify(newFaves));
+    localStorage.setItem('idFave',JSON.stringify(newIdFaves));
+  }
+
 }

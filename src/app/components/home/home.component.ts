@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     type: "titulo"
   });
 
+  protected like:string = '../../../assets/iconmonstr-favorite-2.png'
+
 
   constructor(private route: ActivatedRoute, private Services: SevicesService, private formBuilder: FormBuilder, private router: Router) {
     this.route.params.subscribe(params => {
@@ -47,6 +49,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.getBooks();
       }
     });
+    if(route.snapshot.url[0]?.path === 'favorites'){
+      // console.log('favorites');
+      this.listBooks = this.Services.getFave();
+    }
   }
 
   ngOnInit(): void {}
@@ -74,6 +80,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.search.value.word && this.router.navigateByUrl(`/search/${this.search.value.type}/${this.search.value.word}`);
   }
 
-
+  saveFave(newFave:any){
+    console.log(newFave);
+  }
 
 }

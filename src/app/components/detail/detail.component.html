@@ -2,6 +2,7 @@
 <ng-template #thenBlock>
     <article>
         <img [src]="data?.cover" [alt]="data?.title">
+        <span>Favorite: <img (click)="addFave()" [src]="isFave ? like : nolike"></span>
         <section>
             <label>Titulo</label>
             <h1>{{data?.title}}</h1>

@@ -16,6 +16,7 @@ interface Pagination{
 }
 
 interface Detail{
+    ID:string
     cover:string,
     title:string,
     author:string,

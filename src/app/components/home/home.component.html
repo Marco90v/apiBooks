@@ -21,10 +21,11 @@
             <ul>
                 <li *ngFor="let listBook of listBooks">
                     <img [src]="listBook.cover" [alt]="listBook.title">
-                    <a [routerLink]="['detail/'+listBook.ID]">
+                    <a [routerLink]="['/detail/'+listBook.ID]">
                         <div>
                             <h2>{{listBook.title}}</h2>
                             <p><strong>Autor:</strong> {{listBook.author}}</p>
+                            <!-- <span><img [src]="like" onclick="saveFave(listBook)"></span> -->
                             <span>{{listBook.pages}} Paginas</span>
                         </div>
                     </a>
