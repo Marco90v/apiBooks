@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/interfaces.ts';
 import { SevicesService } from 'src/app/services/sevices.service';
 
@@ -9,13 +9,19 @@ import { SevicesService } from 'src/app/services/sevices.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  protected listBooks: Array<Book> = [];
+  protected status: any = 200;
+  protected listBooks: Book[] | null = null;
   protected itemsPage: number = 10;
   protected ruta: string = "";
+  protected search = this.formBuilder.group({
+    word: '',
+    type: "titulo"
+  });
 
-  constructor(private route: ActivatedRoute, private Services: SevicesService) {
+
+  constructor(private route: ActivatedRoute, private Services: SevicesService, private formBuilder: FormBuilder, private router: Router) {
     this.route.params.subscribe(params => {
       let pageStart :number = 0;
       if(route.snapshot.url[0]?.path === 'mostviewed'){
@@ -33,19 +39,41 @@ export class HomeComponent implements OnInit {
         pageStart = params['page'] * this.itemsPage - this.itemsPage;
       }
       this.ruta += "&results_range=" + pageStart +",10";
-      this.listBooks = [];
-      this.getBooks();
+      if(this.listBooks !== null) this.listBooks = [];
+      if(route.snapshot.url[0]?.path === 'favorites'){
+        const myFaves = localStorage.getItem('myFaves');
+        console.log(myFaves);
+      }else{
+        this.getBooks();
+      }
     });
   }
 
   ngOnInit(): void {}
 
+  ngOnDestroy():void{
+    console.log("ngOnDestroy");
+  }
+
   getBooks(){
-    this.Services.getBooks(this.ruta).subscribe((books)=>{
-      const items = this.Services.filterSimpleBooks(books);
-      this.listBooks = items;
+    this.status = 200;
+    this.Services.getBooks(this.ruta).subscribe({
+      next:(books)=>{
+        const items = this.Services.filterSimpleBooks(books);
+        this.listBooks = items;
+      },
+      error:(e)=> {
+        this.status = e.status;
+        console.log(e);
+      },
+      complete:()=>console.log("complete")
     });
   }
+
+  getBookByWord(){
+    this.search.value.word && this.router.navigateByUrl(`/search/${this.search.value.type}/${this.search.value.word}`);
+  }
+
 
 
 }

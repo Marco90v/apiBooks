@@ -1,22 +1,57 @@
-<div *ngIf="listBooks.length > 0; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>
-    <ul>
-        <li *ngFor="let listBook of listBooks">
-            <img [src]="listBook.cover" [alt]="listBook.title">
-            <a [routerLink]="['detail/'+listBook.ID]">
-                <div>
-                    <h2>{{listBook.title}}</h2>
-                    <p><strong>Autor:</strong> {{listBook.author}}</p>
-                    <span>{{listBook.pages}} Paginas</span>
-                </div>
-            </a>
-        </li>
-    </ul>
-    <app-pagination></app-pagination>
+<form (ngSubmit)="getBookByWord()" [formGroup]="search">
+    <select name="select" formControlName="type" >
+        <option value="titulo" selected>Titulo</option>
+        <option value="autor">Autor</option>
+    </select >
+    <input type="text" formControlName="word" >
+    <button type="submit">Buscar</button>
+</form>
+
+<div *ngIf="status === 200; then thenBlock0 else elseBlock0"></div>
+
+<ng-template #thenBlock0>
+
+    <div *ngIf="listBooks !== null; then thenBlock1 else elseBlock1"></div>
+
+    <ng-template #thenBlock1>
+
+        <div *ngIf="listBooks!.length > 0; then thenBlock2 else elseBlock2"></div>
+
+        <ng-template #thenBlock2>
+            <ul>
+                <li *ngFor="let listBook of listBooks">
+                    <img [src]="listBook.cover" [alt]="listBook.title">
+                    <a [routerLink]="['detail/'+listBook.ID]">
+                        <div>
+                            <h2>{{listBook.title}}</h2>
+                            <p><strong>Autor:</strong> {{listBook.author}}</p>
+                            <span>{{listBook.pages}} Paginas</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <app-pagination></app-pagination>
+        </ng-template>
+
+        <ng-template #elseBlock2>
+            <div class="loading">
+                <p>Sin Datos Disponibles</p>
+            </div>
+        </ng-template>       
+         
+    </ng-template>
+
+    <ng-template #elseBlock1>
+        <div class="loading">
+            <p>Cargando...</p>
+        </div>
+    </ng-template>
+
 </ng-template>
-<ng-template #elseBlock>
+
+<ng-template #elseBlock0>
     <div class="loading">
-        <p>Cargando...</p>
+        <p>Error al recuperar los datos.</p>
     </div>
 </ng-template>
 

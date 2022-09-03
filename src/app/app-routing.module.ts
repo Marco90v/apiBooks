@@ -14,7 +14,8 @@ const routes: Routes = [
   { path:'category/:category/page/:page', component:HomeComponent },
   { path:'detail/:ID', component:DetailComponent },
   { path:'search/:type/:word', component:HomeComponent },
-  { path:'search/:type/:word/page/:page', component:HomeComponent }
+  { path:'search/:type/:word/page/:page', component:HomeComponent },
+  { path:'favorites', component:HomeComponent }
 ];
 
 @NgModule({

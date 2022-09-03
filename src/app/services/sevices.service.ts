@@ -44,7 +44,6 @@ export class SevicesService {
   replaceEntitiesInJSON(str:string):string{
     return str.replaceAll("&lt;","<")
       .replaceAll("&gt;",">")
-    // return this.sanitized.bypassSecurityTrustHtml(str)
   }
 
 }

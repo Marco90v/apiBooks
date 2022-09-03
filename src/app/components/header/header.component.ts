@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/interfaces.ts';
 import { SevicesService } from 'src/app/services/sevices.service';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,18 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  protected arrow:string = '../../../assets/white-down-arrow-png-2.png';
   protected categorys: Array<Category> = [];
   protected menuCategorys: Boolean = false;
-  protected search = this.formBuilder.group({
-    word: '',
-    type: "titulo"
-  });
-
-  constructor(private getCategorys: SevicesService, private formBuilder: FormBuilder, private router: Router) {}
+ 
+  constructor(private getCategorys: SevicesService) {}
 
   ngOnInit(): void {
-    this.getCategorys.getCategory().subscribe((categorys:Array<Category>)=>{
-      this.categorys = categorys;
+
+    this.getCategorys.getCategory().subscribe({
+      next: (value) => this.categorys = value,
+      error: (e) => console.log(e.statusText, e.status),
+      complete: () => console.log("complete")
     });
   }
 
@@ -30,9 +28,5 @@ export class HeaderComponent implements OnInit {
     this.menuCategorys = !this.menuCategorys;
   }
 
-  getBookByWord(){
-    // console.log(this.search.value);
-    this.search.value.word && this.router.navigateByUrl(`/search/${this.search.value.type}/${this.search.value.word}`);
-  }
 
 }

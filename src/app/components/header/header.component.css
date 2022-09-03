@@ -2,25 +2,32 @@ ul{
     list-style: none;
 }
 header{
+    position: fixed;
+    overflow: auto;
+    min-width: 289px;
+    float: left;
+    height: 100vh;
+    
     background-color: #1c1d22;
     color: white;
     padding: 1rem;
-    display: grid;
-    grid-template-columns: auto 350px;
 }
 header li{
     cursor: pointer;
 }
 header > ul > li{
-    display: inline;
-    padding: 0 0.5rem;
+    /* display: inline; */
+    padding: 10px 5px;
     font-weight: bold;
     font-size: 20px;
+}
+header > ul > li:hover > a{
+    color: #eb1808;
 }
 header > ul > li:hover{
     color: #eb1808;
 }
-header > ul > li.active-link{
+header > ul > li.active-link > a{
     color: #eb1808;
 }
 header > ul > li > a{
@@ -30,85 +37,46 @@ header > ul > li > a{
 header > ul > li > a.active-link{
     color: #eb1808;
 }
-header > ul > li > a:hover{
-    color: #eb1808;
-}
 header > ul > li:first-child{
     position: relative;
 }
-header > ul > li:nth-child(2){
-    position: relative;
-}
-header > ul > li:nth-child(2) > ul {
-    display: grid;
-    grid-template-columns: auto auto;
-    background-color: #1c1d22;
+header > ul > li:nth-child(3) > img {
+    width: 25px;
     position: absolute;
-    width: 400px;
-    left: 15px;
-    top: 35px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 1px #0c0c0e;
+    transform: rotateZ(-90deg);
+    margin-left: 20px;
+    transition: transform 0.25s ease-in-out;
+
+}
+header > ul > li:nth-child(3) > img.open {
+    transform: rotateZ(0deg);
+}
+header > ul > li:nth-child(3) > ul {
+    margin-left: 10px;
+    height: 0;
     overflow: hidden;
-    z-index: 10;
-    transition: height 0.25s ease-in-out, width 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition: height 0.25s ease-in-out;
 }
-header > ul > li:nth-child(2) > ul.close {
-    height: 0px;
-    width: 0px;
-    opacity: 0;
+header > ul > li:nth-child(3) > ul.open {
+    height: 1060px;
+    padding-top: 10px;
+    /* height: 100%; */
 }
-header > ul > li:nth-child(2) > ul.open {
-    height: 544px;
-    width: 400px;
-    opacity: 1;
+header > ul > li:nth-child(3) > ul > li {
+    /* padding: 5px 0; */
+    border-radius: 5px;
+    padding: 5px 10px;
 }
-header > ul > li:nth-child(2) > ul > li {
-    padding: 0.5rem;
-}
-header > ul > li:nth-child(2) > ul > li > a {
-    color: white;
+header > ul > li:nth-child(3) > ul > li > a {
     text-decoration: none;
+    color: white;
 }
-header > ul > li:nth-child(2) > ul > li:hover {
+header > ul > li:nth-child(3) > ul > li:hover {
     background-color: #eb1808;
 }
-header > ul > li:nth-child(2) > ul > li > a.active-link {
+header > ul > li:nth-child(3) > ul > li > a.active-link {
     color: #eb1808;
 }
-header > ul > li:nth-child(2) > ul > li:hover > a.active-link {
+header > ul > li:nth-child(3) > ul > li:hover > a.active-link {
     color: white;
-}
-header > form > select{
-    font-size: 15px;
-    padding: 4px;
-    background-color: #dfdfdf;
-    border-radius: 5px 0 0 5px;
-}
-header > form > input{
-    font-size: 15px;
-    padding: 5px;
-    /* border-radius: 5px 0 0 5px; */
-}
-header > form > input[type="text"]:active{
-    border-color: #eb1808;
-}
-header > form > input[type="text"]:focus{
-    border-color: #eb1808;
-}
-header > form > input[type="text"]:focus-visible{
-    border-color: #eb1808;
-    outline-color: #eb1808;
-}
-header > form > button{
-    font-size: 15px;
-    padding: 5px;
-    border-radius: 0 5px 5px 0;
-    background-color: #eb1808;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-header > form > button:hover{
-    background-color: #ba1306;
 }

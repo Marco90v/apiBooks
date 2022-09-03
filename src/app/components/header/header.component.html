@@ -1,8 +1,10 @@
 <header>
     <ul>
         <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
+        <li><a [routerLink]="['mostviewed']" routerLinkActive="active-link">Mas Visto</a></li>
         <li (click)="handlerMenuCategorys()" routerLinkActive="active-link" >
             Categoria
+            <img [src]="arrow" alt="arrow" [ngClass]="menuCategorys ? 'open': 'close' ">
             <ul [ngClass]="menuCategorys ? 'open': 'close' ">
                 <li *ngFor="let category of categorys">
                     <a [routerLink]="['category/'+category.nicename]" routerLinkActive="active-link" >
@@ -11,14 +13,6 @@
                 </li>
             </ul>
         </li>
-        <li><a [routerLink]="['mostviewed']" routerLinkActive="active-link">Mas Visto</a></li>
+        <li><a routerLink="/favorites" routerLinkActive="active-link">Mis Favoritos</a></li>
     </ul>
-    <form (ngSubmit)="getBookByWord()" [formGroup]="search">
-        <select name="select" formControlName="type" >
-            <option value="titulo" selected>Titulo</option>
-            <option value="autor">Autor</option>
-        </select >
-        <input type="text" formControlName="word" >
-        <button type="submit">Buscar</button>
-    </form>
 </header>
